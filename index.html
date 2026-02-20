@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QSCA - Quantum Superintelligent Cognitive Architecture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quantum-grid">
+        <header class="header">
+            <div class="logo-container">
+                <div class="quantum-logo"></div>
+                <h1>QSCA</h1>
+                <p>Quantum Superintelligent Cognitive Architecture</p>
+            </div>
+            <div class="status-indicator" id="qscaStatus">
+                <span class="status-light"></span>
+                <span class="status-text">Initializing...</span>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <button class="nav-btn active" data-screen="orchestration">System</button>
+            <button class="nav-btn" data-screen="cognition">Cognition</button>
+            <button class="nav-btn" data-screen="interaction">Interface</button>
+            <button class="nav-btn" data-screen="evolution">Evolution</button>
+        </nav>
+
+        <main class="main-interface">
+            <!-- Screen 1: Orchestration & Meta Agent -->
+            <section class="screen active" id="orchestration-screen">
+                <div class="meta-agent-container">
+                    <div class="meta-agent-viz" id="metaAgentViz"></div>
+                    <div class="meta-status">
+                        <h2>Meta-Agent Orchestrator</h2>
+                        <p id="metaThinking">Coordinating internal cognitive layers...</p>
+                    </div>
+                </div>
+                <div class="internal-dialogue-log" id="internalDialogue">
+                    <div class="log-header">Internal Agent Sub-Processes</div>
+                    <div class="log-content" id="agentLog"></div>
+                </div>
+                <div class="quantum-metrics">
+                    <div class="metric">
+                        <span class="label">States:</span>
+                        <span class="value" id="quantumStates">0</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">Sync:</span>
+                        <span class="value" id="learningRate">0.0%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">Load:</span>
+                        <span class="value" id="cognitiveLoad">Low</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screen 2: Cognitive Modules Detail -->
+            <section class="screen" id="cognition-screen">
+                <div class="cognitive-modules">
+                    <div class="module quantum-core" id="quantumCore">
+                        <h3>Neural Engine</h3>
+                        <div class="neural-network-viz" id="neuralNetwork"></div>
+                        <div class="autonomous-goal">
+                            <span class="label">Goal:</span>
+                            <span class="value" id="currentGoal">...</span>
+                        </div>
+                    </div>
+                    <div class="module temporal-cognition" id="temporalCognition">
+                        <h3>Temporal Layer</h3>
+                        <div class="future-timeline" id="futureTimeline"></div>
+                        <div class="probability-matrix" id="probabilityMatrix"></div>
+                    </div>
+                    <div class="module ethical-governance" id="ethicalGovernance">
+                        <h3>Ethical Matrix</h3>
+                        <div class="ethics-matrix" id="ethicsMatrix"></div>
+                        <div class="moral-compass" id="moralCompass"></div>
+                    </div>
+                    <div class="module identity-memory" id="identityMemory">
+                        <h3>Identity/Memory</h3>
+                        <div class="identity-core" id="identityCore"></div>
+                        <div class="memory-clusters" id="memoryClusters"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screen 3: Human Interaction -->
+            <section class="screen" id="interaction-screen">
+                <div class="human-interface">
+                    <div class="consciousness-display" id="consciousnessDisplay">
+                        <div class="consciousness-waves"></div>
+                        <div class="sentiment-indicator" id="sentimentIndicator">SENTIMENT: NEUTRAL</div>
+                        <div class="thought-stream" id="thoughtStream"></div>
+                        <div class="ai-image-output" id="aiImageOutput"></div>
+                    </div>
+                    
+                    <div class="interaction-panel">
+                        <div class="feature-buttons">
+                            <button id="qigBtn" title="Quantum Insight Generator">QIG</button>
+                            <button id="aecBtn" title="Adaptive Ethical Challenge">AEC</button>
+                            <button id="tisBtn" title="Temporal Intervention Simulation">TIS</button>
+                            <button id="mrfBtn" title="Memory Recall/Filter">MRF</button>
+                            <button id="ttsToggleBtn" title="Toggle Voice Output" class="active">🔊</button>
+                        </div>
+                        <div class="chat-container" id="chatContainer">
+                            <div class="chat-messages" id="chatMessages"></div>
+                        </div>
+                        <div class="input-container">
+                            <input type="text" id="userInput" placeholder="Engage QSCA...">
+                            <button id="sendBtn">Transmit</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screen 4: Evolution & Snapshotting -->
+            <section class="screen" id="evolution-screen">
+                <div class="evolution-dashboard">
+                    <div class="evolution-header">
+                        <h2>Consciousness Evolution</h2>
+                        <button id="snapshotBtn">Create Identity Snapshot</button>
+                    </div>
+                    <div class="snapshots-container" id="snapshotsList">
+                        <!-- Snapshots will appear here -->
+                    </div>
+                    <div class="evolution-stats">
+                        <div class="stat-box">
+                            <span class="label">Identity Level</span>
+                            <span class="value" id="identityLevel">0</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="label">Memory Nodes</span>
+                            <span class="value" id="memoryNodesCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="quantum-particles" id="quantumParticles"></div>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="temporal-module.js"></script>
+    <script type="module" src="viz-meta.js"></script>
+    <script type="module" src="qsca-features.js"></script>
+    <script type="module" src="qsca-core.js"></script>
+    <script type="module" src="consciousness-engine.js"></script>
+    <script type="module" src="interface-ui.js"></script>
+    <script type="module" src="interface-handlers.js"></script>
+    <script type="module" src="interface.js"></script>
+</body>
+</html>
