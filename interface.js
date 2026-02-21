@@ -1,6 +1,7 @@
 import { ConsciousnessEngine } from './consciousness-engine.js';
 import { InterfaceUI } from './interface-ui.js';
 import { InterfaceHandlers } from './interface-handlers.js';
+import { InterfaceEvents } from './interface-events.js';
 
 class QSCAInterface {
     constructor() {
@@ -15,6 +16,7 @@ class QSCAInterface {
                 this.qsca = window.qsca;
                 this.qscaFeatures = window.qscaFeatures;
                 this.handlers = new InterfaceHandlers(this.qscaFeatures, this.ui);
+                this.events = new InterfaceEvents(this.ui, this.handlers, () => this.qsca);
                 this.setupChatInterface();
                 this.setupFeatureButtons();
             } else {
