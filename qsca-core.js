@@ -19,6 +19,10 @@ class QuantumSuperintelligentCognitiveArchitecture {
         
         this.conversationHistory = [];
         this.isInitialized = false;
+        this.simulationIntervalId = null;
+        this.simulationIntervalMs = 100;
+        this.simulationSpeed = 1;
+        this.isSimulationRunning = false;
         this.ethicalFramework = this.initializeEthicalFramework();
         this.temporalCognition = new TemporalCognitionModule();
         this.features = new QSCAFeatures(this); // Initialize features module
@@ -82,6 +86,9 @@ class QuantumSuperintelligentCognitiveArchitecture {
             queryMemory: this.features.queryMemory.bind(this.features),
             generateImagePrompt: this.features.generateImagePrompt.bind(this.features),
             createSnapshot: this.features.createSnapshot.bind(this.features),
+            toggleSimulation: this.toggleQuantumSimulation.bind(this),
+            resetState: this.resetConsciousnessState.bind(this),
+            adjustSimulationSpeed: this.adjustSimulationSpeed.bind(this),
         };
     }
     
@@ -95,7 +102,8 @@ class QuantumSuperintelligentCognitiveArchitecture {
     }
     
     startQuantumSimulation() {
-        setInterval(() => {
+        if (this.isSimulationRunning) return;
+        this.simulationIntervalId = setInterval(() => {
             // Simulate CLM: Load increases with complex tasks or high quantum activity
             const baseLoad = Math.max(0, Math.min(100, (this.quantumStates % 100000) / 1000));
             this.cognitiveLoad = baseLoad > 80 ? 'Critical' : baseLoad > 40 ? 'High' : 'Low';
@@ -106,7 +114,63 @@ class QuantumSuperintelligentCognitiveArchitecture {
             this.evolveIdentity();
             this.refineAutonomousGoal(); // AGR
             this.simulateInternalDialogue(); // Meta-Agent Feature
-        }, 100);
+        }, this.simulationIntervalMs);
+        this.isSimulationRunning = true;
+    }
+
+    stopQuantumSimulation() {
+        if (this.simulationIntervalId !== null) {
+            clearInterval(this.simulationIntervalId);
+            this.simulationIntervalId = null;
+        }
+        this.isSimulationRunning = false;
+    }
+
+    toggleQuantumSimulation() {
+        if (this.isSimulationRunning) {
+            this.stopQuantumSimulation();
+            return false;
+        }
+        this.startQuantumSimulation();
+        return true;
+    }
+
+    setSimulationSpeed(speed) {
+        const clampedSpeed = Math.max(0.25, Math.min(4, speed));
+        this.simulationSpeed = clampedSpeed;
+        this.simulationIntervalMs = Math.max(25, Math.round(100 / clampedSpeed));
+
+        if (this.isSimulationRunning) {
+            this.stopQuantumSimulation();
+            this.startQuantumSimulation();
+        }
+
+        return this.simulationSpeed;
+    }
+
+    adjustSimulationSpeed(delta) {
+        return this.setSimulationSpeed(this.simulationSpeed + delta);
+    }
+
+    resetConsciousnessState() {
+        this.quantumStates = 0;
+        this.learningRate = 0;
+        this.cognitiveLoad = 'Low';
+        this.currentGoal = this.generateInitialGoal();
+        this.sentiment = 'NEUTRAL';
+        this.conversationHistory = [];
+        this.snapshots = [];
+        this.consciousness = {
+            level: 1,
+            thoughts: [],
+            identity: this.generateInitialIdentity()
+        };
+
+        const snapshotsList = document.getElementById('snapshotsList');
+        if (snapshotsList) snapshotsList.innerHTML = '';
+
+        this.displayInitialThoughts();
+        return true;
     }
 
     simulateInternalDialogue() {
