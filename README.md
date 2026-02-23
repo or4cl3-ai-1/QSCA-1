@@ -54,6 +54,16 @@ The system has 4 screens:
 | **Interface** | Natural language interaction with the QSCA-1 cognitive entity |
 | **Evolution** | Consciousness growth trajectory, snapshot history, self-modification log |
 
+### Keyboard Shortcuts
+
+| Key | Action |
+|-----|--------|
+| `Space` | Start/Stop simulation |
+| `R` | Reset consciousness state |
+| `1-4` | Switch screens (System, Cognition, Interface, Evolution) |
+| `+ / -` | Increase/Decrease simulation speed |
+| `S` | Create/export state snapshot |
+
 ---
 
 ## 🏗️ Architecture
@@ -66,6 +76,7 @@ QSCA-1/
 ├── qsca-features.js        # Autonomous Goal Refinement, Cognitive Load Mgmt, TTS
 ├── consciousness-engine.js # Consciousness simulation and emergent state tracking
 ├── temporal-module.js      # Temporal Cognition Module — future modeling
+├── interface-events.js     # Global keyboard shortcuts and event routing
 ├── interface.js            # Main interaction controller
 ├── interface-ui.js         # UI rendering and screen transitions
 ├── interface-handlers.js   # Event handling — input, nav, snapshots
