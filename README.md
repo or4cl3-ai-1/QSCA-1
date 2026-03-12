@@ -132,3 +132,8 @@ MIT License — see [LICENSE](LICENSE).
 
 *OR4CL3 AI Solutions | Arizona, USA | © 2025 Dustin Groves*  
 *"Code is not just logic; it is a performance."*
+
+## License
+
+This project is licensed under the **Or4cl3 Open Model License (OOML) v1.0**.
+See [LICENSE.md](LICENSE.md) for full terms.
